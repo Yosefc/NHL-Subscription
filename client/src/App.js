@@ -1,26 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Route } from "react-router-dom";
 import './App.css';
+import Navbar from "./components/Navbar"
+import UnsubscriptionPage from "./components/UnsubscriptionPage";
+import SubscriptionPage from "./components/SubscriptionPage"
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Navbar />
+          <main className="container">
+            <img src="http://www.stickpng.com/assets/images/5a4fbb7bda2b4f099b95da15.png" width="100" height="100" alt="Logo" />
+            <Route path="/home" component={SubscriptionPage} />
+            <Route path="/unsubscribe" component={UnsubscriptionPage} />
+          </main>
+        </div>
+      </BrowserRouter>
     );
   }
 }
