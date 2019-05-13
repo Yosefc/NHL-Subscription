@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from "react-router-dom";
-import { SubscrtionRoute, UnsubscribeRoute } from "./Router/RouterControler";
+import { SubscrtionRoute, UnsubscribeRoute, StatsPageRoute } from "./Router/RouterControler";
 import './App.css';
 import Navbar from "./components/Navbar"
 
@@ -14,6 +14,7 @@ class App extends Component {
             <img src="http://www.stickpng.com/assets/images/5a4fbb7bda2b4f099b95da15.png" width="100" height="100" alt="Logo" />
             <SubscrtionRoute />
             <UnsubscribeRoute />
+            <StatsPageRoute />
           </main>
         </div>
       </BrowserRouter>

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { SubscrtionRoute } from "./Router/RouterControler";
 import { BrowserRouter } from "react-router-dom";
+import Navbar from "../src/components/Navbar";
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
