@@ -1,10 +1,11 @@
 import React from "react";
+import StatsChart from "../components/StatsChart";
 
 const SatsPage = () => {
     return (
         <div>
-            Hi
-      </div>
+            <StatsChart />
+        </div>
     )
 }
 
