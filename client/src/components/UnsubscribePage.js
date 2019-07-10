@@ -1,99 +1,72 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import SubscriptionBox from "./SubscriptionBox";
 
-class UnsubscribePage extends Component {
-  state = {
-    checked: false,
-    value: ""
-  };
-
-  handleRadioChange = event => {
-    let checked = false;
-    if (event.target.id === "other") checked = !checked;
-    this.setState({
-      checked,
-      value: event.target.value
-    });
-  };
-
-  render() {
-    const OtherReason = _ =>
-      this.state.checked ? <input type="text" placeholder="Please tell use why.." /> : null;
-    return (
-      <div>
-        <section>
-          <p>
-            Oh man...
-            <br />
-            It's us, wasn't it..
-          </p>
-        </section>
-        <SubscriptionBox path={window.location.pathname} />
-        <input type="radio" id="huey" name="drone" value="huey" />
-        <label htmlFor="huey">Unsubscribe me from all team updates.</label>
-        <div className="unsubscribe-reasons">
-          <p>Would you mind telling us why you don't want to get email updates anymore?</p>
-          <div>
-            <div>
-              <label>
-                <input
-                  type="radio"
-                  id="not-following"
-                  name="other"
-                  value="notFollowing"
-                  checked={this.state.value === "notFollowing"}
-                  onChange={this.handleRadioChange}
-                />
-                I'm not following that team anymore.
-              </label>
-            </div>
-            <div>
-              <label>
-                {" "}
-                <input
-                  type="radio"
-                  id="too-many"
-                  name="other"
-                  value="tooMany"
-                  checked={this.state.value === "tooMany"}
-                  onChange={this.handleRadioChange}
-                />
-                Too many emails
-              </label>
-            </div>
-            <div>
-              <label>
-                {" "}
-                <input
-                  type="radio"
-                  id="not-signed"
-                  name="other"
-                  value="notSiged"
-                  checked={this.state.value === "notSiged"}
-                  onChange={this.handleRadioChange}
-                />
-                I didn't sign up for this
-              </label>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="radio"
-                  id="other"
-                  name="other"
-                  value="other"
-                  checked={this.state.value === "other"}
-                  onChange={this.handleRadioChange}
-                />
-                Other
-              </label>
-              {<OtherReason />}
-            </div>
-          </div>
+function UnsubscribePage() {
+  const [isChecked, setChecked] = useState("not interested");
+  const [otherReason, setOtherReason] = useState("");
+  return (
+    <div>
+      <p>
+        Oh man...
+        <br />
+        It's us, wasn't it..
+      </p>
+      <SubscriptionBox path={window.location.pathname} />
+      <section id="unsubscribe-reasons">
+        <div>
+          <label>
+            <input
+              type="radio"
+              name="unsubscribe-reason"
+              value="not interested"
+              checked={isChecked === "not interested"}
+              onChange={e => setChecked(e.target.value)}
+            />
+            I don't want interesting updates any more
+          </label>
         </div>
-      </div>
-    );
-  }
+        <div>
+          <label>
+            <input
+              type="radio"
+              name="unsubscribe-reason"
+              value="did not sign up"
+              checked={isChecked === "did not sign up"}
+              onChange={e => setChecked(e.target.value)}
+            />
+            I didn't sign up for this
+          </label>
+        </div>
+        <div>
+          <label>
+            <input
+              type="radio"
+              name="unsubscribe-reason"
+              value="too many emails"
+              checked={isChecked === "too many emails"}
+              onChange={e => setChecked(e.target.value)}
+            />
+            I'm getting too many emails from you
+          </label>
+        </div>
+        <div>
+          <label>
+            <input
+              type="radio"
+              name="unsubscribe-reason"
+              value="other"
+              checked={isChecked === "other"}
+              onChange={e => setChecked(e.target.value)}
+            />
+            Other
+          </label>
+          {isChecked === "other" ? (
+            <input type="text" value={otherReason} onChange={e => setOtherReason(e.target.value)} />
+          ) : null}
+        </div>
+      </section>
+    </div>
+  );
 }
 
 export default UnsubscribePage;
