@@ -22,6 +22,7 @@
 .selected-link {
   border: 2.5px solid #ff033d;
   border-style: none none solid none;
+  transition: border-width 0.23s linear;
 }
 
 .container {
