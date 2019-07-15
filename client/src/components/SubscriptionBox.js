@@ -1,5 +1,5 @@
 import React from "react";
-import { getTeams } from "../teams";
+import CustomSelect from "./CustomSelect";
 
 const SubscriptionBox = ({ path }) => {
   const btnText = _ => (path.match(/unsubscribe/) ? "Unsubcribe" : "Subscribe");
@@ -7,10 +7,7 @@ const SubscriptionBox = ({ path }) => {
     <div>
       <form>
         <div>
-          <select>
-            <option value="Choose Teams">Choose Teams</option>
-            <SelectOptions />
-          </select>
+          <CustomSelect />
         </div>
         <input type="email" placeholder="Enter email" />
         <button>{btnText()}</button>
@@ -18,12 +15,5 @@ const SubscriptionBox = ({ path }) => {
     </div>
   );
 };
-
-const SelectOptions = () =>
-  getTeams().map(team => (
-    <option key={team.id} value={team.id}>
-      {team.name}
-    </option>
-  ));
 
 export default SubscriptionBox;

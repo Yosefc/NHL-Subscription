@@ -30,3 +30,52 @@
   padding: 0 20% 0 20%;
   font-size: 1.4rem;
 }
+
+#custom-select {
+  width: 300px;
+  height: 20px;
+  background-color: white;
+  border: 2px solid blue;
+  position: relative;
+}
+
+.custom-select-options-container {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 22;
+  max-height: 300px;
+  width: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: white;
+  list-style: none;
+  transition: height 10s ease-in-out;
+}
+
+.custom-select-option {
+  border: 0.5px solid grey;
+  border-style: none none solid none;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.shown {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  animation: fade-in 1s;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
