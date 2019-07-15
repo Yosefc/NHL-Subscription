@@ -8,15 +8,16 @@ const CustomSelect = () => {
       <input
         type="text"
         id="custom-select"
-        autocomplete="off"
+        autoComplete="off"
         onClick={_ => setSelectOpenState(true)}
         onBlur={_ => setSelectOpenState(false)}
       />
-      {/* {selectOpenState === true ? ( */}
-      <div className={selectOpenState ? "custom-select-options-container shown" : "hidden"}>
+      <div
+        id="custom-select-options"
+        className={selectOpenState ? "custom-select-options-container shown" : "hidden"}
+      >
         <SelectOptions />
       </div>
-      {/* ) : null} */}
     </div>
   );
 };
