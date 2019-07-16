@@ -57,6 +57,14 @@
   border: 0.5px solid grey;
   border-style: none none solid none;
   cursor: pointer;
+  text-align: start;
+  padding-left: 10px;
+  font-size: 1.2rem;
+}
+
+.custom-select-option:hover {
+  background-color: #a7a5a5;
+  color: #fff;
 }
 
 .hidden {
