@@ -4,6 +4,19 @@ import { getTeams } from "../teams";
 const CustomSelect = () => {
   const [selectOpenState, setSelectOpenState] = useState(false);
   const [selectedTeams, setSelectedTeams] = useState([]);
+
+  const SelectOptions = () =>
+    getTeams().map(team => (
+      <li
+        className="custom-select-option"
+        key={team.id}
+        value={team.id}
+        onClick={e => setSelectedTeams([...selectedTeams, e.target.innerHTML])}
+      >
+        {team.name}
+      </li>
+    ));
+
   return (
     <div>
       <input
@@ -20,16 +33,7 @@ const CustomSelect = () => {
         tabIndex="1"
         onBlur={_ => setSelectOpenState(false)}
       >
-        {getTeams().map(team => (
-          <li
-            className="custom-select-option"
-            key={team.id}
-            value={team.id}
-            onClick={e => setSelectedTeams([...selectedTeams, e.target.innerHTML])}
-          >
-            {team.name}
-          </li>
-        ))}
+        <SelectOptions />
       </div>
     </div>
   );
